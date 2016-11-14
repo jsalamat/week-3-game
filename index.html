@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Psychic Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css"> 
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+
+    <h1>The Psychic Game</h1>>
+    <p>Guess what letter I'm thinking of</p>
+
+    <script>   
+      var options = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+        // To test execise console the every array
+
+      // for (var i=0; i<options.length; i++) {
+      //   console.log(options[i]);
+      // }
+        
+        // onkeyup for userGuess and computerGuess random  choice on var options
+
+        document.onkeyup = function() {
+                var userGuess = String.fromCharCode(event.keyCode).
+                toLowerCase();
+
+                console.log(userGuess);
+
+                var computerGuess = options[Math.floor(Math.random()*options.length)];
+
+                console.log(computerGuess);
+
+
+                if (userGuess == computerGuess) {
+                    alert('You Win');
+                } else {
+                    alert('You Lose');
+                }
+        }
+
+
+    </script>
+</body>
+</html>
