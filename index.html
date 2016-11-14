@@ -13,6 +13,9 @@
 
     <script>   
       var options = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+      var wins = 0;
+      var losses = 0;
+      var ties = 0;
 
         // To test execise console the every array
 
@@ -32,12 +35,16 @@
 
                 console.log(computerGuess);
 
-
+        // To Test if and else condition on userGuess and computerGuess
                 if (userGuess == computerGuess) {
-                    alert('You Win');
-                } else {
-                    alert('You Lose');
+                    wins++;
+                    alert('Wins: ' + wins);
+                } 
+                if (userGuess != computerGuess){
+                    losses++;
+                    alert('Losses: ' + losses);
                 }
+
         }
 
 
