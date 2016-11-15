@@ -7,15 +7,29 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
+     <h1>The Psychic Game</h1>
+     <p>Guess what letter I'm thinking of</p>
+    <div id="displayResults">
+    </div>
 
-    <h1>The Psychic Game</h1>>
-    <p>Guess what letter I'm thinking of</p>
+    <script> 
+    // 1) ABC choices for user and computer for game
+    // 2) Compare computer and player guesses
+    // 3) Calculate wins and losses; player win if match
+    // 4) Give player 9 guesses and after 9 guesses the player lose
+    // 5) Show guess attempt
+    // 6) Game restart after a win or lose
+    // 7) display win, lose and guess  
 
-    <script>   
-      var options = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+
+      var ABCoptions = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q",
+                        "r", "s", "t", "u", "v", "w", "x", "y", "z"];
       var wins = 0;
       var losses = 0;
-      var ties = 0;
+      var guesses = 9;
+      var yourGuesses = [];
+     
 
         // To test execise console the every array
 
@@ -25,25 +39,48 @@
         
         // onkeyup for userGuess and computerGuess random  choice on var options
 
-        document.onkeyup = function() {
+        document.onkeyup = function(event) {
+                var key = event.key;
+                if ((key == 'a') || (key == 'b') || (key == 'c') || (key == 'd') || (key == 'e') || (key == 'f') ||
+                    (key == 'g') || (key == 'h') || (key == 'i') || (key == 'j') || (key == 'k') || (key == 'l') ||
+                    (key == 'm') || (key == 'n') || (key == 'o') || (key == 'p') || (key == 'q') || (key == 'r') || 
+                    (key == 's') || (key == 't') || (key == 'u') || (key == 'v') || (key == 'w') || (key == 'x') || 
+                    (key == 'y') || (key == 'z')){
+                    yourGuesses.push(key);
+                }
                 var userGuess = String.fromCharCode(event.keyCode).
                 toLowerCase();
 
-                console.log(userGuess);
 
-                var computerGuess = options[Math.floor(Math.random()*options.length)];
+                // console.log(userGuess);
 
-                console.log(computerGuess);
+                var computerGuess = ABCoptions[Math.floor(Math.random()*ABCoptions.length)];
+
+                // console.log(computerGuess);
 
         // To Test if and else condition on userGuess and computerGuess
                 if (userGuess == computerGuess) {
                     wins++;
-                    alert('Wins: ' + wins);
+                    guesses = 9;
+                    yourGuesses = [];
+                    // alert('Wins: ' + wins);
                 } 
                 if (userGuess != computerGuess){
-                    losses++;
-                    alert('Losses: ' + losses);
+                    guesses--;   
                 }
+                if (guesses == 0) {
+                    losses++;
+                    guesses = 9;
+                    yourGuesses = [];
+                    // alert('Losses: ' + losses);
+                }
+                var html = 
+                "<p>Wins: " + wins + "</p>" +
+                "<p>Losses: " + losses + "</p>" +
+                "<p>Guesses Left: " + guesses + "</p>" +
+                "<p>Your Guesses so far: " + yourGuesses + "</p> ";
+
+                document.querySelector('#displayResults').innerHTML = html;
 
         }
 

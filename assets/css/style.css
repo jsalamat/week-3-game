@@ -1,0 +1,17 @@
+html, body {
+	margin: 20px;
+	line-height: 1;
+}
+
+h1 {
+	font-size: 40px;
+	font-weight: bold;
+	margin: 10px;
+}
+
+p {
+	font-size: 20px;
+	font-weight: semibold;
+	margin: 10px;
+	letter-spacing: .25px;
+}
