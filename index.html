@@ -7,8 +7,11 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
+
      <h1>The Psychic Game</h1>
+
      <p>Guess what letter I'm thinking of</p>
+     
     <div id="displayResults">
     </div>
 
@@ -19,8 +22,7 @@
     // 4) Give player 9 guesses and after 9 guesses the player lose
     // 5) Show guess attempt
     // 6) Game restart after a win or lose
-    // 7) display win, lose and guess  
-
+    // 7) display win, lose and guess
 
 
       var ABCoptions = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q",
@@ -28,8 +30,7 @@
       var wins = 0;
       var losses = 0;
       var guesses = 9;
-      var yourGuesses = [];
-     
+      var yourGuesses = [];  
 
         // To test execise console the every array
 
@@ -37,8 +38,14 @@
       //   console.log(options[i]);
       // }
         
-        // onkeyup for userGuess and computerGuess random  choice on var options
+        //computerGuess random choice on var options
 
+        var computerGuess = ABCoptions[Math.floor(Math.random()*ABCoptions.length)];
+        // activated console to see letters
+                // console.log(computerGuess);
+
+        //  onkeyup function when key press store(push) to yourGuesses array
+        
         document.onkeyup = function(event) {
                 var key = event.key;
                 if ((key == 'a') || (key == 'b') || (key == 'c') || (key == 'd') || (key == 'e') || (key == 'f') ||
@@ -51,19 +58,21 @@
                 var userGuess = String.fromCharCode(event.keyCode).
                 toLowerCase();
 
-
+        // activated console to see letters
                 // console.log(userGuess);
 
-                var computerGuess = ABCoptions[Math.floor(Math.random()*ABCoptions.length)];
+        // Alert and Console log To test if and else condition on userGuess and computerGuess
 
-                // console.log(computerGuess);
-
-        // To Test if and else condition on userGuess and computerGuess
                 if (userGuess == computerGuess) {
                     wins++;
-                    guesses = 9;
+                    guesses = 10; 
                     yourGuesses = [];
+                    computerGuess = ABCoptions[Math.floor(Math.random()*ABCoptions.length)];
+                    // console.log(computerGuess);
                     // alert('Wins: ' + wins);
+
+                    // Value is 10 because it already interacting with (userGuess != computerGuess) 
+                    // when computerGuess pick another random array
                 } 
                 if (userGuess != computerGuess){
                     guesses--;   
@@ -72,6 +81,8 @@
                     losses++;
                     guesses = 9;
                     yourGuesses = [];
+                    computerGuess = ABCoptions[Math.floor(Math.random()*ABCoptions.length)];
+                    // console.log(computerGuess);
                     // alert('Losses: ' + losses);
                 }
                 var html = 
