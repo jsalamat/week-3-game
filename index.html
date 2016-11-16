@@ -65,7 +65,7 @@
 
                 if (userGuess == computerGuess) {
                     wins++;
-                    guesses = 10; 
+                    guesses = 9; 
                     yourGuesses = [];
                     computerGuess = ABCoptions[Math.floor(Math.random()*ABCoptions.length)];
                     // console.log(computerGuess);
@@ -73,8 +73,9 @@
 
                     // Value is 10 because it already interacting with (userGuess != computerGuess) 
                     // when computerGuess pick another random array
+                    // fix value 9 and change else if on !=
                 } 
-                if (userGuess != computerGuess){
+                else if (userGuess != computerGuess){
                     guesses--;   
                 }
                 if (guesses == 0) {
